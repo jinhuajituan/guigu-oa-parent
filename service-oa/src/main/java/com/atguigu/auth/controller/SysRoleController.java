@@ -1,9 +1,9 @@
 package com.atguigu.auth.controller;
 
 import com.atguigu.auth.service.SysRoleService;
-import com.atguigu.common.config.exception.GuiguException;
 import com.atguigu.common.result.Result;
 import com.atguigu.model.system.SysRole;
+import com.atguigu.vo.system.AssginRoleVo;
 import com.atguigu.vo.system.SysRoleQueryVo;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -23,19 +23,23 @@ import java.util.Map;
 @RequestMapping("/admin/system/sysRole")
 public class SysRoleController {
 
-    //http://localhost:8080/admin/system/sysRole/findAll
-
     //注入service
     @Autowired
     private SysRoleService sysRoleService;
 
-    /*//查询所有角色
-    @GetMapping("/findAll")
-    public List<SysRole> findAll(){
-        //调用service的方法
-        List<SysRole> list = sysRoleService.list();
-        return list;
-    }*/
+    @ApiOperation(value = "根据用户获取角色数据")
+    @GetMapping("toAssign/{userId}")
+    public Result toAssign(@PathVariable Long userId){
+        Map<String, Object> roleMap = sysRoleService.findRoleDataByUserId(userId);
+        return Result.ok(roleMap);
+    }
+
+    @ApiOperation(value = "根据用户分配角色")
+    @PostMapping("/doAssign")
+    public Result doAssign(@RequestBody AssginRoleVo assginRoleVo) {
+        sysRoleService.doAssign(assginRoleVo);
+        return Result.ok();
+    }
 
     //统一返回数据结果
     @ApiOperation("查询所有角色")
