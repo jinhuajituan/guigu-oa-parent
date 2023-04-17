@@ -29,5 +29,7 @@ public class SysUserSrviceImpl extends ServiceImpl<SysUserMapper, SysUser> imple
         return sysUser;
     }
 
+    public void se(){
 
+    }
 }
