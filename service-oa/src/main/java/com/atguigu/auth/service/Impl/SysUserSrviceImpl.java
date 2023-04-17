@@ -28,8 +28,5 @@ public class SysUserSrviceImpl extends ServiceImpl<SysUserMapper, SysUser> imple
         SysUser sysUser = baseMapper.selectOne(wrapper);
         return sysUser;
     }
-
-    public void se(){
-
-    }
+   
 }
