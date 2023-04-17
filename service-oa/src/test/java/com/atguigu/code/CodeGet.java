@@ -20,7 +20,6 @@ public class CodeGet {
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
         gc.setOutputDir("F:\\JavaProcedure\\IDEA\\guigu-oa-parent\\service-oa"+"/src/main/java");
-
         gc.setServiceName("%sService");	//去掉Service接口的首字母I
         gc.setAuthor("atguigu");
         gc.setOpen(false);
@@ -38,7 +37,7 @@ public class CodeGet {
         // 4、包配置
         PackageConfig pc = new PackageConfig();
         pc.setParent("com.atguigu");
-        pc.setModuleName("auth"); //模块名
+        pc.setModuleName("process"); //模块名
         pc.setController("controller");
         pc.setService("service");
         pc.setMapper("mapper");
@@ -47,7 +46,7 @@ public class CodeGet {
         // 5、策略配置
         StrategyConfig strategy = new StrategyConfig();
 
-        strategy.setInclude("sys_user_role");
+        strategy.setInclude("sys_role");
 
         strategy.setNaming(NamingStrategy.underline_to_camel);//数据库表映射到实体的命名策略
 
